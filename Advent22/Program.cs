@@ -17,17 +17,14 @@ class program
         public Elf(List<Food> foods)
         {
             this.foods = foods;
-        }
-        public uint GetTotalCalories()
-        {
-            uint totalCalories = 0;
-            foreach(Food food in foods)
+            this.totalCalories = 0;
+            foreach (Food food in foods)
             {
                 totalCalories += food.calories;
             }
-            return totalCalories;
         }
         public List<Food> foods;
+        public uint totalCalories;
     }
 
     static void Main(string[] args)
@@ -55,12 +52,10 @@ class program
         }
 
         Console.WriteLine("Number of Elves: {0}\n", elves.Count());
+        List<Elf>sortedElves = elves.OrderBy(o=>o.totalCalories).ToList();
 
-        Elf[] sortedElves = elves.ToArray();
-
-        Array.Sort(sortedElves, (x, y) => x.GetTotalCalories().CompareTo(y.GetTotalCalories()));
-        Console.WriteLine("Most Calories: {0}", sortedElves[sortedElves.Length - 1].GetTotalCalories());
-        uint top3ElvesCalories = sortedElves[sortedElves.Length - 3].GetTotalCalories() + sortedElves[sortedElves.Length - 2].GetTotalCalories() + sortedElves[sortedElves.Length - 1].GetTotalCalories();
+        Console.WriteLine("Most Calories: {0}", sortedElves[sortedElves.Count - 1].totalCalories);
+        uint top3ElvesCalories = sortedElves[sortedElves.Count - 3].totalCalories + sortedElves[sortedElves.Count - 2].totalCalories + sortedElves[sortedElves.Count - 1].totalCalories;
         Console.WriteLine("Last three elves: {0}", top3ElvesCalories);
 
         Console.ReadLine();

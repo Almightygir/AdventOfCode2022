@@ -56,17 +56,12 @@ class program
 
         Console.WriteLine("Number of Elves: {0}\n", elves.Count());
 
-        uint mostCalories = 0;
-        uint elfIter = 1;
-        foreach(Elf elf in elves)
-        {
-            uint currentElfCalories = elf.GetTotalCalories();
-            Console.WriteLine("Elf {0} Calories = {1}", elfIter, currentElfCalories);
-            mostCalories = currentElfCalories > mostCalories ? currentElfCalories : mostCalories;
-            ++elfIter;
-        }
+        Elf[] sortedElves = elves.ToArray();
 
-        Console.WriteLine("Most Calories: {0}", mostCalories);
+        Array.Sort(sortedElves, (x, y) => x.GetTotalCalories().CompareTo(y.GetTotalCalories()));
+        Console.WriteLine("Most Calories: {0}", sortedElves[sortedElves.Length - 1].GetTotalCalories());
+        uint top3ElvesCalories = sortedElves[sortedElves.Length - 3].GetTotalCalories() + sortedElves[sortedElves.Length - 2].GetTotalCalories() + sortedElves[sortedElves.Length - 1].GetTotalCalories();
+        Console.WriteLine("Last three elves: {0}", top3ElvesCalories);
 
         Console.ReadLine();
     }

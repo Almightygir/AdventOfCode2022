@@ -50,17 +50,20 @@ class program
             else
             {
                 elves.Add(new Elf(foods));
-                foods.Clear();
-            }    
+                foods = new List<Food>();
+            }
         }
 
         Console.WriteLine("Number of Elves: {0}\n", elves.Count());
 
         uint mostCalories = 0;
+        uint elfIter = 1;
         foreach(Elf elf in elves)
         {
             uint currentElfCalories = elf.GetTotalCalories();
+            Console.WriteLine("Elf {0} Calories = {1}", elfIter, currentElfCalories);
             mostCalories = currentElfCalories > mostCalories ? currentElfCalories : mostCalories;
+            ++elfIter;
         }
 
         Console.WriteLine("Most Calories: {0}", mostCalories);

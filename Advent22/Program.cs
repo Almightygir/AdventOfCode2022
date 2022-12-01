@@ -32,14 +32,14 @@ class program
         Console.WriteLine("Advent Of Code 2022\n");
 
         //Open the file
-        
+
         string filePath = Path.Combine(Environment.CurrentDirectory, @"Data\", @"Input.txt");
 
         List<Elf> elves = new List<Elf>();
         List<Food> foods = new List<Food>();
-        foreach(string line in File.ReadLines(filePath))
+        foreach (string line in File.ReadLines(filePath))
         {
-            if(line.Length > 0)
+            if (line.Length > 0)
             {
                 uint calories = uint.Parse(line);
                 foods.Add(new Food(calories));
@@ -51,12 +51,19 @@ class program
             }
         }
 
-        Console.WriteLine("Number of Elves: {0}\n", elves.Count());
-        List<Elf>sortedElves = elves.OrderBy(o=>o.totalCalories).ToList();
+        if (elves.Count > 2)
+        {
+            Console.WriteLine("Number of Elves: {0}\n", elves.Count());
+            List<Elf> sortedElves = elves.OrderBy(o => o.totalCalories).ToList();
 
-        Console.WriteLine("Most Calories: {0}", sortedElves[sortedElves.Count - 1].totalCalories);
-        uint top3ElvesCalories = sortedElves[sortedElves.Count - 3].totalCalories + sortedElves[sortedElves.Count - 2].totalCalories + sortedElves[sortedElves.Count - 1].totalCalories;
-        Console.WriteLine("Last three elves: {0}", top3ElvesCalories);
+            Console.WriteLine("Most Calories: {0}", sortedElves[sortedElves.Count - 1].totalCalories);
+            uint top3ElvesCalories = sortedElves[sortedElves.Count - 3].totalCalories + sortedElves[sortedElves.Count - 2].totalCalories + sortedElves[sortedElves.Count - 1].totalCalories;
+            Console.WriteLine("Last three elves: {0}", top3ElvesCalories);
+        }
+        else
+        {
+            Console.WriteLine("Something went wrong, there are not enoug elves...");
+        }
 
         Console.ReadLine();
     }

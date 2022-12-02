@@ -101,6 +101,14 @@ class program
             }
                 
         }
+        public Gesture WinningGesture()
+        {
+            return (this.name == "Rock") ? new Gesture('B') : (this.name == "Paper") ? new Gesture('C') : new Gesture('A');
+        }
+        public Gesture LosingGesture()
+        {
+            return (this.name == "Rock") ? new Gesture('C') : (this.name == "Paper") ? new Gesture('A') : new Gesture('B');
+        }
         public static int OutcomeScore(Gesture theirs, Gesture mine)
         {
             if(theirs.name == mine.name)
@@ -153,13 +161,13 @@ class program
                     switch(line[2])
                     {
                         case 'X': //lose
-                            myGesture = (theirGesture.name == "Rock") ? new Gesture('C') : (theirGesture.name == "Paper") ? new Gesture('A') : new Gesture('B');
+                            myGesture = theirGesture.LosingGesture();
                             break;
                         case 'Y': //draw
                             myGesture = theirGesture;
                             break;
                         case 'Z': //win
-                            myGesture = (theirGesture.name == "Rock") ? new Gesture('B') : (theirGesture.name == "Paper") ? new Gesture('C') : new Gesture('A');
+                            myGesture = theirGesture.WinningGesture();
                             break;
                     }
 

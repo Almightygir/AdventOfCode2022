@@ -64,8 +64,8 @@ class program
             Console.WriteLine("Number of Elves: {0}", elves.Count());
             List<Elf> sortedElves = elves.OrderBy(o => o.totalCalories).ToList();
 
-            Console.WriteLine("Most Calories: {0}", sortedElves[sortedElves.Count - 1].totalCalories);
-            uint top3ElvesCalories = sortedElves[sortedElves.Count - 3].totalCalories + sortedElves[sortedElves.Count - 2].totalCalories + sortedElves[sortedElves.Count - 1].totalCalories;
+            Console.WriteLine("Most Calories: {0}", sortedElves[^1].totalCalories);
+            uint top3ElvesCalories = sortedElves[^3].totalCalories + sortedElves[^2].totalCalories + sortedElves[^1].totalCalories;
             Console.WriteLine("Last three elves: {0}", top3ElvesCalories);
         }
         else

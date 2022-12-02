@@ -138,12 +138,36 @@ class program
             if (line.Length > 0)
             {
                 Gesture theirGesture = new Gesture(line[0]);
-                Gesture myGesture = new Gesture(line[2]);
+                if(false) //quick way to get rid of part 1
+                {
+                    Gesture myGesture = new Gesture(line[2]);
 
-                int score = 0;
-                score += myGesture.score;
-                score += Gesture.OutcomeScore(theirGesture, myGesture);
-                finalScore += score;
+                    int score = 0;
+                    score += myGesture.score;
+                    score += Gesture.OutcomeScore(theirGesture, myGesture);
+                    finalScore += score;
+                }
+                else
+                {
+                    Gesture myGesture = new Gesture();
+                    switch(line[2])
+                    {
+                        case 'X': //lose
+                            myGesture = (theirGesture.name == "Rock") ? new Gesture('C') : (theirGesture.name == "Paper") ? new Gesture('A') : new Gesture('B');
+                            break;
+                        case 'Y': //draw
+                            myGesture = theirGesture;
+                            break;
+                        case 'Z': //win
+                            myGesture = (theirGesture.name == "Rock") ? new Gesture('B') : (theirGesture.name == "Paper") ? new Gesture('C') : new Gesture('A');
+                            break;
+                    }
+
+                    int score = 0;
+                    score += myGesture.score;
+                    score += Gesture.OutcomeScore(theirGesture, myGesture);
+                    finalScore += score;
+                }
             }
         }
         Console.WriteLine("Final score: {0}", finalScore);

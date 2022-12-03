@@ -27,28 +27,26 @@ namespace Advent22
             }
 
             List<char> candidates = new List<char>();
-            int lineEntry = 1;
-            foreach (string line in File.ReadLines(filePath))
+            string[] allLines = File.ReadAllLines(filePath);
+            for (int i = 0; i < allLines.Length; i += 3)
             {
-                char[] lineCharArray = line.ToCharArray();
-                if (lineCharArray.Length > 0)
+                string[] elfGroup = new string[3];
+                Array.Copy(allLines, i, elfGroup, 0, 3);
+                foreach (KeyValuePair<char, int> entry in alphabet)
                 {
-                    int halfLineLength = lineCharArray.Length / 2;
-                    char[] compartmentOne = lineCharArray[..^halfLineLength];
-                    char[] compartmentTwo = lineCharArray[halfLineLength..];
-                    foreach (KeyValuePair<char, int> entry in alphabet)
+                    char[] line1 = elfGroup[0].ToCharArray();
+                    char[] line2 = elfGroup[1].ToCharArray();
+                    char[] line3 = elfGroup[2].ToCharArray();
+                    if (line1.Contains(entry.Key) && line2.Contains(entry.Key) && line3.Contains(entry.Key))
                     {
-                        if (compartmentOne.Contains(entry.Key) && compartmentTwo.Contains(entry.Key))
-                        {
-                            candidates.Add(entry.Key);
-                        }
+                        candidates.Add(entry.Key);
                     }
                 }
-                lineEntry++;
             }
 
+
             int finalScore = 0;
-            foreach(char candidate in candidates)
+            foreach (char candidate in candidates)
             {
                 finalScore += alphabet[candidate];
             }

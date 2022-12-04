@@ -21,8 +21,10 @@ namespace Advent22
                     string[] lineSplit = line.Split(',');
                     int[,] elfRanges = new int[,] { { int.Parse(lineSplit[0].Split('-')[0]), int.Parse(lineSplit[0].Split('-')[1]) }, { int.Parse(lineSplit[1].Split('-')[0]), int.Parse(lineSplit[1].Split('-')[1]) } };
 
-                    if((elfRanges[0, 0] >= elfRanges[1, 0] && elfRanges[0, 1] <= elfRanges[1, 1]) ||
-                       (elfRanges[1, 0] >= elfRanges[0, 0] && elfRanges[1, 1] <= elfRanges[0, 1]))
+                    if((elfRanges[0, 0] >= elfRanges[1, 0] && elfRanges[0, 0] <= elfRanges[1, 1]) ||
+                       (elfRanges[0, 1] >= elfRanges[1, 0] && elfRanges[0, 1] <= elfRanges[1, 1]) ||
+                       (elfRanges[1, 0] >= elfRanges[0, 0] && elfRanges[1, 0] <= elfRanges[0, 1]) ||
+                       (elfRanges[1, 1] >= elfRanges[0, 0] && elfRanges[1, 1] <= elfRanges[0, 1]))
                     {
                         redundantAssignments++;
                     }

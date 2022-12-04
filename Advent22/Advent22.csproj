@@ -11,13 +11,20 @@
   <ItemGroup>
     <None Remove="data\Input1.txt" />
     <None Remove="data\Input2.txt" />
+    <None Remove="data\Input4.txt" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="data\Input1.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="data\Input3.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="data\Input2.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="data\Input4.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

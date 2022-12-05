@@ -71,10 +71,12 @@ namespace Advent22
                 }
             }
 
+            string topCrates = "";
             foreach(List<char> crate in crates)
             {
-                Console.WriteLine("{0}", crate.Last());
+                topCrates += crate[^1].ToString();
             }
+            Console.WriteLine("{0}", topCrates);
         }
     }
 }

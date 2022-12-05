@@ -52,11 +52,22 @@ namespace Advent22
 
             foreach(List<int> instruction in instructions)
             {
-                for(int i = instruction[0] - 1; i >= 0; --i)
+                bool part1 = false;
+                if (part1)
                 {
-                    char crate = crates[instruction[1] - 1].Last();
-                    crates[instruction[1] - 1].RemoveAt(crates[instruction[1] - 1].Count - 1);
-                    crates[instruction[2] - 1].Add(crate);
+                    for (int i = instruction[0] - 1; i >= 0; --i)
+                    {
+                        char crate = crates[instruction[1] - 1].Last();
+                        crates[instruction[1] - 1].RemoveAt(crates[instruction[1] - 1].Count - 1);
+                        crates[instruction[2] - 1].Add(crate);
+                    }
+                }
+                else
+                {
+                    int numCrates = instruction[0] > crates[instruction[1] - 1].Count ? crates[instruction[1] - 1].Count : instruction[0];
+                    List<char> pickedCrates = crates[instruction[1] - 1].ToArray()[^numCrates..].ToList();
+                    crates[instruction[1] - 1].RemoveRange(crates[instruction[1] - 1].Count - numCrates, numCrates);
+                    crates[instruction[2] - 1].AddRange(pickedCrates);
                 }
             }
 

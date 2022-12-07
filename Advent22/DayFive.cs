@@ -8,7 +8,7 @@ namespace Advent22
 {
     internal class DayFive
     {
-        public static void Day_Five()
+        public static void Run()
         {
             Console.WriteLine("Day Five:");
 

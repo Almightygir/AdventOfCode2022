@@ -10,11 +10,12 @@ namespace Advent22
         {
             Console.WriteLine("Advent Of Code 2022\n");
 
-            DayOne.Day_One();
-            DayTwo.Day_Two();
-            DayThree.Day_Three();
-            DayFour.Day_Four();
-            DayFive.Day_Five();
+            DayOne.Run();
+            DayTwo.Run();
+            DayThree.Run();
+            DayFour.Run();
+            DayFive.Run();
+            DaySix.Run();
 
             Console.ReadLine();
         }

@@ -31,7 +31,7 @@ namespace Advent22
             public List<Food> foods;
             public uint totalCalories;
         }
-        public static void Day_One()
+        public static void Run()
         {
 
             Console.WriteLine("Day One:");

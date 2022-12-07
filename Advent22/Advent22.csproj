@@ -13,6 +13,7 @@
     <None Remove="data\Input2.txt" />
     <None Remove="data\Input4.txt" />
     <None Remove="data\Input5.txt" />
+    <None Remove="data\Input6.txt" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +33,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="data\Input4.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="data\Input6.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

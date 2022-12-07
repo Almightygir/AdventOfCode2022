@@ -62,7 +62,7 @@ namespace Advent22
             public int score;
         }
 
-        public static void Day_Two()
+        public static void Run()
         {
             Console.WriteLine("Day Two:");
 
